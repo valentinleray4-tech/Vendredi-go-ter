@@ -2,7 +2,7 @@ import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 
 // 1. Configuration ( Mets tes identifiants Supabase ici )
 const SUPABASE_URL = 'https://vdetqssagjdlvpffmorp.supabase.co'
-const SUPABASE_ANON_KEY = 'TU_METS_TA_CLE_ANON_ICI'
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZkZXRxc3NhZ2pkbHZwZmZtb3JwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkxODQyNDUsImV4cCI6MjA5NDc2MDI0NX0.kMmilrlCcQP8qLy76ClvwfsHY774iLxJjGOfT8tQsNg'
 
 // 2. Définis ici le CODE SECRET que les admins devront taper sur la page
 const CODE_SECRET_ATTENDU = 'TON_CODE_SECRET_ICI' 
