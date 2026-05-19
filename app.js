@@ -17,10 +17,14 @@ const messageComplet = document.getElementById('message-complet')
 let sessionsActives = []
 
 async function init() {
+    // Calculer la date du jour au format ISO (AAAA-MM-JJ)
+    const aujourdHui = new Date().toISOString().split('T')[0]
+
     const { data, error } = await supabase
         .from('sessions')
         .select('*')
         .eq('statut', 'actif')
+        .gte('date_evenement', aujourdHui) // 👈 Ligne magique : supérieur ou égal à aujourd'hui
         .order('date_evenement', { ascending: true })
 
     if (error) {
