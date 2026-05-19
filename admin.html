@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration - Le Vendredi Goûter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 min-h-screen py-6 px-4 font-sans text-slate-800">
+
+    <div class="max-w-xl mx-auto bg-white rounded-2xl shadow-sm border border-slate-100 p-6 space-y-6">
+        
+        <div class="text-center border-b border-slate-100 pb-4">
+            <h1 class="text-2xl font-bold text-slate-900">⚙️ Espace Administration</h1>
+            <p class="text-sm text-slate-500 mt-1">Gestion des sessions "Vendredi Goûter"</p>
+        </div>
+
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 space-y-2">
+            <label class="block text-xs font-bold uppercase tracking-wider text-amber-800">🔑 Code Secret Admin</label>
+            <input type="password" id="input-code-secret" placeholder="Entrez le code pour agir..." 
+                   class="w-full px-3 py-2 border border-amber-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white">
+            <p class="text-[11px] text-amber-700">Ce code est obligatoire pour ajouter ou annuler un vendredi.</p>
+        </div>
+
+        <div class="space-y-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <h2 class="font-semibold text-slate-800 text-sm">📅 Ajouter un vendredi exceptionnel</h2>
+            <form id="form-add-session" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                    <label class="block text-xs text-slate-500 mb-1">Date</label>
+                    <input type="date" id="add-date" required class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm">
+                </div>
+                <div class="flex items-end">
+                    <button type="submit" class="w-full bg-slate-900 text-white font-medium text-sm py-2 px-4 rounded-lg hover:bg-slate-800 transition shadow-sm">
+                        ➕ Ajouter la date
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="space-y-3">
+            <h2 class="font-semibold text-slate-900 text-base">📋 Liste des vendredis programmés</h2>
+            <div id="liste-vendredis" class="space-y-2 max-h-[400px] overflow-y-auto pr-1">
+                <p class="text-sm text-slate-400 italic">Chargement des dates...</p>
+            </div>
+        </div>
+
+        <div class="text-center pt-2">
+            <a href="index.html" class="text-xs text-slate-400 hover:text-slate-600 underline">← Retour à la page d'inscription</a>
+        </div>
+
+    </div>
+
+    <script src="admin.js" type="module"></script>
+</body>
+</html>
