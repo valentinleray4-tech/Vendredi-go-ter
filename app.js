@@ -112,12 +112,30 @@ formInscription.addEventListener('submit', async (e) => {
     const sessionId = selectDate.value
     const nom = document.getElementById('input-nom').value.trim()
     const contact = document.getElementById('input-contact').value.trim()
-    const role = document.querySelector('input[name="role"]:checked').value
+    
+    const veutGateau = document.getElementById('check-gateau').checked
+    const veutVente = document.getElementById('check-vente').checked
+
+    // Sécurité : vérifier qu'au moins une case est cochée
+    if (!veutGateau && !veutVente) {
+        alert("Veuillez cocher au moins une option (Gâteau et/ou Vente) pour vous inscrire ! 😊")
+        return
+    }
+
+    // Préparer la liste des lignes à insérer dans Supabase
+    const inscriptionsAEnvoyer = []
+    
+    if (veutGateau && !document.getElementById('label-role-gateau').classList.contains('hidden')) {
+        inscriptionsAEnvoyer.push({ session_id: sessionId, nom_parent: nom, contact: contact, role: 'gateau' })
+    }
+    if (veutVente && !document.getElementById('label-role-vente').classList.contains('hidden')) {
+        inscriptionsAEnvoyer.push({ session_id: sessionId, nom_parent: nom, contact: contact, role: 'vente' })
+    }
 
     // Envoyer les données à Supabase
     const { error } = await supabase
         .from('inscriptions')
-        .insert([{ session_id: sessionId, nom_parent: nom, contact: contact, role: role }])
+        .insert(inscriptionsAEnvoyer)
 
     if (error) {
         alert("Oups, une erreur est survenue lors de l'inscription : " + error.message)
