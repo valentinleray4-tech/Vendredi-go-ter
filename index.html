@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendredi Goûter 🎂</title>
+    <!-- Intégration de Tailwind CSS pour le design mobile -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+
+    <!-- Conteneur principal (bridé à la taille d'un smartphone sur grand écran) -->
+    <div class="max-w-md mx-auto min-h-screen flex flex-col justify-between p-4 bg-white shadow-md">
+        
+        <!-- En-tête -->
+        <header class="text-center my-6">
+            <span class="text-5xl">🎂</span>
+            <h1 class="text-2xl font-bold text-gray-900 mt-2">Le Vendredi Goûter</h1>
+            <p class="text-sm text-gray-500 mt-1">Inscrivez-vous pour régaler les enfants de l'école !</p>
+        </header>
+
+        <!-- Section Choix de la date -->
+        <main class="flex-grow space-y-6">
+            <div>
+                <label for="select-date" class="block text-sm font-semibold text-gray-700 mb-2">
+                    👉 Étape 1 : Choisissez votre vendredi
+                </label>
+                <select id="select-date" class="w-full p-3 bg-gray-100 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500 text-lg">
+                    <option value="">Chargement des dates...</option>
+                </select>
+            </div>
+
+            <!-- Section Jauges / État des besoins (Masquée au début) -->
+            <div id="section-besoins" class="hidden bg-amber-50 p-4 rounded-2xl border border-amber-100 space-y-3">
+                <h3 class="font-bold text-amber-900 text-sm tracking-wide uppercase">Besoins pour cette semaine :</h3>
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="bg-white p-3 rounded-xl border border-amber-200 text-center">
+                        <span class="block text-2xl">🍰</span>
+                        <span class="block text-xs text-gray-500 font-medium">Gâteaux</span>
+                        <span id="jauge-gateaux" class="text-lg font-bold text-gray-800">0 / 0</span>
+                    </div>
+                    <div class="bg-white p-3 rounded-xl border border-amber-200 text-center">
+                        <span class="block text-2xl">🏪</span>
+                        <span class="block text-xs text-gray-500 font-medium">Vendeurs</span>
+                        <span id="jauge-vendeurs" class="text-lg font-bold text-gray-800">0 / 0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formulaire d'inscription (Masqué au début) -->
+            <form id="form-inscription" class="hidden space-y-4">
+                <h3 class="font-semibold text-gray-700 text-sm">👉 Étape 2 : Vos coordonnées</h3>
+                
+                <div>
+                    <input type="text" id="input-nom" required placeholder="Nom et Prénom (ex: Julie Martin)" 
+                        class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500">
+                </div>
+
+                <div>
+                    <input type="tel" id="input-contact" required placeholder="N° de téléphone (pour le rappel)" 
+                        class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500">
+                </div>
+
+                <h3 class="font-semibold text-gray-700 text-sm pt-2">👉 Étape 3 : Choisissez votre rôle</h3>
+                
+                <!-- Options de rôle sous forme de gros boutons radio tactiles -->
+                <div class="space-y-2">
+                    <label id="label-role-gateau" class="flex items-center p-4 border border-gray-200 rounded-xl bg-white cursor-pointer active:bg-gray-50">
+                        <input type="radio" name="role" value="gateau" checked class="h-5 w-5 text-amber-600 focus:ring-amber-500">
+                        <span class="ml-3 font-medium text-gray-700">Je prépare un gâteau 🍰</span>
+                    </label>
+
+                    <label id="label-role-vente" class="flex items-center p-4 border border-gray-200 rounded-xl bg-white cursor-pointer active:bg-gray-50">
+                        <input type="radio" name="role" value="vente" class="h-5 w-5 text-amber-600 focus:ring-amber-500">
+                        <span class="ml-3 font-medium text-gray-700">Je viens aider à la vente (16h-17h) 🏪</span>
+                    </label>
+                </div>
+
+                <!-- Bouton de validation massif pour les pouces -->
+                <button type="submit" class="w-full bg-amber-500 text-white font-bold p-4 rounded-xl shadow-md hover:bg-amber-600 transition active:scale-[0.98]">
+                    Valider mon inscription 🚀
+                </button>
+            </form>
+
+            <!-- Message si tout est complet -->
+            <div id="message-complet" class="hidden p-4 bg-green-50 border border-green-200 text-green-800 rounded-xl text-center font-medium">
+                🎉 Ce vendredi est déjà complet ! Merci pour votre générosité.
+            </div>
+        </main>
+
+        <!-- Mentions Légales RGPD -->
+        <footer class="mt-8">
+            <p class="text-[10px] text-gray-400 text-center">
+                Conformément au RGPD, vos coordonnées sont uniquement utilisées pour le rappel du goûter et seront supprimées en fin d'année.
+            </p>
+        </footer>
+
+    </div>
+
+    <!-- C'est ici que nous lierons notre logique JavaScript à l'étape suivante -->
+    <script src="app.js" type="module"></script>
+</body>
+</html>
